@@ -1,13 +1,12 @@
 package com.example.codealongw3.models;
 
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Game {
@@ -38,6 +37,19 @@ public class Game {
 
     @NotNull
     private String systemRequirments;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonBackReference
+    private Review review;
+
+
+
+
+    public Game(){
+
+    }
+
+
 
 
 }
