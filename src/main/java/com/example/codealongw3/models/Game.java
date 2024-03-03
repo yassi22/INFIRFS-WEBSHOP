@@ -57,6 +57,7 @@ public class Game {
         this.title = title;
         this.description = description;
         this.genre = genre;
+        this.developer = developer;
         this.publisher = publisher;
         this.releaseDate = releaseDate;
         this.languages = languages;
