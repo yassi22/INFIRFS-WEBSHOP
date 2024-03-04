@@ -7,9 +7,13 @@ import com.example.codealongw3.dao.TaskRepository;
 import com.example.codealongw3.models.Category;
 import com.example.codealongw3.models.Game;
 import com.example.codealongw3.models.Task;
+import jakarta.persistence.ElementCollection;
+import jakarta.transaction.TransactionScoped;
+import jakarta.transaction.Transactional;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -21,6 +25,13 @@ public class Seeder {
     private TaskDao taskDao;
 
     private GameRepository gameRepository;
+
+    @ElementCollection
+    private List<String> genre;
+
+    @ElementCollection
+    private List<String> languages;
+
 
     public Seeder(TaskDao taskDao, GameRepository gameRepository) {
         this.taskDao = taskDao;
@@ -44,25 +55,57 @@ public class Seeder {
     }
 
     private void seedGames() {
-        Game game = new Game();
-        game.setTitle("Cyberpunk");
-        game.setDescription("This game is set in a cyberpunk word!");
-        ArrayList<String> genres = new ArrayList<>();
-        genres.add("Action");
-        genres.add("Rpg");
-        genres.add("Schooter");
-        game.setGenre(genres);
-        game.setDeveloper("CD PROJEKT RED");
-        game.setPublisher("CD PROJEKT RED");
-        game.setReleaseDate("20 mar, 2019");
-        ArrayList<String> languages = new ArrayList<>();
+
+        if (this.genre == null) {
+            this.genre = new ArrayList<String>();
+        }
+
+        genre.add("Action");
+        genre.add("Rpg");
+        genre.add("Shooter");
+
+        if (this.languages == null) {
+            this.languages = new ArrayList<String>();
+        }
+
         languages.add("English");
         languages.add("Spanish");
         languages.add("Dutch");
-        game.setLanguages(languages);
-        game.setPrice(59.99);
-        this.gameRepository.save(game);
-    }
 
+
+        Game game = new Game("Cyberpunk", "Game is set in a cyberpunk world", genre, "Cd project RED", "Cd project RED", "mar 20 2019", languages, 59.99);
+//        game.setTitle("Cyberpunk");
+//        game.setDescription("This game is set in a cyberpunk word!");
+//
+//
+//        if(this.genre == null) {
+//            this.genre = new ArrayList<String>();
+//        }
+//
+//        genre.add("Action");
+//        genre.add("Rpg");
+//        genre.add("Shooter");
+//
+//        game.setGenre(genre);
+//
+//        game.setDeveloper("CD PROJEKT RED");
+//        game.setPublisher("CD PROJEKT RED");
+//        game.setReleaseDate("20 mar, 2019");
+//
+//        if(this.languages == null) {
+//            this.languages = new ArrayList<String>();
+//        }
+//
+//        languages.add("English");
+//        languages.add("Spanish");
+//        languages.add("Dutch");
+//
+//
+//        game.setLanguages(languages);
+//
+//        game.setPrice(59.99);
+        this.gameRepository.save(game);
+
+    }
 
 }

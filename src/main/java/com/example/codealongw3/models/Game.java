@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Game {
@@ -20,7 +21,7 @@ public class Game {
 
     @NotNull
     @ElementCollection
-    private ArrayList<String> genre = new ArrayList<>();
+    private List<String> genre;
 
     @NotNull
     private String developer;
@@ -31,19 +32,17 @@ public class Game {
 
     @NotNull
     @ElementCollection
-    private ArrayList<String> languages = new ArrayList<>();
+    private List<String> languages;
 
-    @NotNull
-    private String systemRequirments;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JsonBackReference
-    private Review review;
-
-    @NotNull
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JsonBackReference
-    private GameSystemRequirments gameSystemRequirments;
+//    @ManyToOne(cascade = CascadeType.MERGE)
+//    @JsonBackReference
+//    private Review review;
+//
+//    @NotNull
+//    @OneToOne(cascade = CascadeType.MERGE)
+//    @JsonBackReference
+//    private GameSystemRequirments gameSystemRequirments;
 
     @NotNull
     private double price;
@@ -53,7 +52,7 @@ public class Game {
 
     }
 
-    public Game(String title, String description,ArrayList<String> genre, String developer, String publisher, String releaseDate, ArrayList<String> languages, double price){
+    public Game(String title, String description, List<String> genre, String developer, String publisher, String releaseDate,List<String> languages, double price){
         this.title = title;
         this.description = description;
         this.genre = genre;
@@ -80,13 +79,14 @@ public class Game {
         this.description = description;
     }
 
-    public ArrayList<String> getGenre() {
+    public List<String> getGenre() {
         return genre;
     }
 
-    public void setGenre(ArrayList<String> genre) {
+    public void setGenre(List<String> genre) {
         this.genre = genre;
     }
+
 
     public String getDeveloper() {
         return developer;
@@ -112,37 +112,29 @@ public class Game {
         this.releaseDate = releaseDate;
     }
 
-    public ArrayList<String> getLanguages() {
+    public List<String> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(ArrayList<String> languages) {
+    public void setLanguages(List<String> languages) {
         this.languages = languages;
     }
 
-    public String getSystemRequirments() {
-        return systemRequirments;
-    }
-
-    public void setSystemRequirments(String systemRequirments) {
-        this.systemRequirments = systemRequirments;
-    }
-
-    public Review getReview() {
-        return review;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
-    }
-
-    public GameSystemRequirments getGameSystemRequirments() {
-        return gameSystemRequirments;
-    }
-
-    public void setGameSystemRequirments(GameSystemRequirments gameSystemRequirments) {
-        this.gameSystemRequirments = gameSystemRequirments;
-    }
+//    public Review getReview() {
+//        return review;
+//    }
+//
+//    public void setReview(Review review) {
+//        this.review = review;
+//    }
+//
+//    public GameSystemRequirments getGameSystemRequirments() {
+//        return gameSystemRequirments;
+//    }
+//
+//    public void setGameSystemRequirments(GameSystemRequirments gameSystemRequirments) {
+//        this.gameSystemRequirments = gameSystemRequirments;
+//    }
 
     public double getPrice() {
         return price;

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-
 public class GameDao {
 
     private final GameRepository gameRepository;
@@ -21,7 +20,9 @@ public class GameDao {
         return this.gameRepository.findAll();
     }
 
+    @Transactional
     public void createGame(GameDTO gameDTO) {
+
         Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.genre, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.languages, gameDTO.price);
         this.gameRepository.save(game);
     }
