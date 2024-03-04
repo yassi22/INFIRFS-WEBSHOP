@@ -27,7 +27,7 @@ public class Game {
     private String developer;
     @NotNull
     private String publisher;
-    @NotNull
+
     private String releaseDate;
 
     @NotNull

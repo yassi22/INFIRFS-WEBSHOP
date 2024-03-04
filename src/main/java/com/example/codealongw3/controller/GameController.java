@@ -24,6 +24,15 @@ public class GameController {
         return ResponseEntity.ok(gameDao.getAllGames());
     }
 
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateGame(@PathVariable Long id, @RequestBody GameDTO gameDTO){
+        this.gameDao.updateGame(gameDTO, id);
+        return ResponseEntity.ok("Game product is updated" + id);
+    }
+
+
+
     @PostMapping
     public ResponseEntity<String> createGame(@RequestBody GameDTO gameDTO){
         try {
@@ -34,6 +43,12 @@ public class GameController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id){
+        this.gameDao.deleteGameById(id);
+        return ResponseEntity.ok("Task is deleted");
+
+    }
 
 
 }

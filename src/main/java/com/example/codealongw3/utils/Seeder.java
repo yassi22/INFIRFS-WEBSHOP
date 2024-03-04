@@ -74,37 +74,13 @@ public class Seeder {
 
 
         Game game = new Game("Cyberpunk", "Game is set in a cyberpunk world", genre, "Cd project RED", "Cd project RED", "mar 20 2019", languages, 59.99);
-//        game.setTitle("Cyberpunk");
-//        game.setDescription("This game is set in a cyberpunk word!");
-//
-//
-//        if(this.genre == null) {
-//            this.genre = new ArrayList<String>();
-//        }
-//
-//        genre.add("Action");
-//        genre.add("Rpg");
-//        genre.add("Shooter");
-//
-//        game.setGenre(genre);
-//
-//        game.setDeveloper("CD PROJEKT RED");
-//        game.setPublisher("CD PROJEKT RED");
-//        game.setReleaseDate("20 mar, 2019");
-//
-//        if(this.languages == null) {
-//            this.languages = new ArrayList<String>();
-//        }
-//
-//        languages.add("English");
-//        languages.add("Spanish");
-//        languages.add("Dutch");
-//
-//
-//        game.setLanguages(languages);
-//
-//        game.setPrice(59.99);
+        Game gameGodOfWar = new Game("God of war", "Enter the Norse realm\n" +
+                "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters", genre, "Santa monica studio", "Playstation PC LLC", "14 Jan, 2002", languages, 49.99);
+
+
         this.gameRepository.save(game);
+        this.gameRepository.save(gameGodOfWar);
+
 
     }
 
