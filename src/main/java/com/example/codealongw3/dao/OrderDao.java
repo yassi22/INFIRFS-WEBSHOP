@@ -44,7 +44,7 @@ public class OrderDao {
         Optional<Order> order = this.orderRepository.findById(id);
 
         if(order.isPresent()){
-//            order.get().setGames();
+            order.get().setGames(orderDTO.games);
             this.orderRepository.save(order.get());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fault this id does not exist");

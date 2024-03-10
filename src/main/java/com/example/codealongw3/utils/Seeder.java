@@ -26,24 +26,23 @@ public class Seeder {
 
     private LanguageRepository languageRepository;
 
-
-    @ElementCollection
-    private List<String> languages;
+    private OrderRepository orderRepository;
 
 
-    public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository) {
+    public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository) {
         this.taskDao = taskDao;
         this.gameRepository = gameRepository;
         this.genreRepository = genreRepository;
         this.languageRepository = languageRepository;
+        this.orderRepository = orderRepository;
     }
-
 
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
         this.seedTasks();
         this.seedGames();
+        this.seedOrders();
     }
 
     private void seedTasks() {
@@ -54,6 +53,7 @@ public class Seeder {
         this.taskDao.createTask(task2);
 
     }
+
 
     private void seedGames() {
 
@@ -76,17 +76,16 @@ public class Seeder {
 
         Genre genre1 = new Genre("Shooter");
         game.setGenre(genre1);
-        game.setLanguages(Set.of(language1,language2));
+        game.setLanguages(Set.of(language1, language2));
 
 
         this.genreRepository.save(genre1);
 
 
-
         Game gameGodOfWar = new Game(
                 "God of war",
                 "Enter the Norse realm\n" +
-                "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
+                        "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
                 "Santa monica studio",
                 "Playstation PC LLC",
                 "14 Jan, 2002",
@@ -97,8 +96,8 @@ public class Seeder {
         Genre genre2 = new Genre("Action");
         gameGodOfWar.setGenre(genre2);
 
-        gameGodOfWar.setLanguages(Set.of(language1,language2));
-        
+        gameGodOfWar.setLanguages(Set.of(language1, language2));
+
         this.genreRepository.save(genre2);
 
 
@@ -107,5 +106,20 @@ public class Seeder {
 
 
     }
+
+    public void seedOrders() {
+        Order order = new Order();
+        order.setGames(List.of(new Game(
+                "Hell Divers",
+                "A game about killing bugs",
+                "Arrowhead Game Studios",
+                "PlayStation PC LLC",
+                "8 Feb, 2024",
+                49.99
+                , 4)));
+
+        this.orderRepository.save(order);
+    }
+
 
 }
