@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Set;
 
 @Entity
@@ -39,13 +38,6 @@ public class Game {
     @ManyToOne
     @JsonBackReference
     private Order order;
-
-
-//    @ManyToOne(cascade = CascadeType.MERGE)
-//    @JsonBackReference
-//    private Review review;
-//
-
 
 
     @NotNull
@@ -133,6 +125,14 @@ public class Game {
         this.amount = amount;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     //    public Review getReview() {
 //        return review;
 //    }
@@ -145,10 +145,6 @@ public class Game {
 //        return gameSystemRequirments;
 //    }
 //
-//    public void setGameSystemRequirments(GameSystemRequirments gameSystemRequirments) {
-//        this.gameSystemRequirments = gameSystemRequirments;
-//    }
-
     public double getPrice() {
         return price;
     }

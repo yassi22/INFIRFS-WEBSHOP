@@ -6,23 +6,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "Orders")
 public class Order {
     @Id
     @GeneratedValue
     public long id;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     @JsonManagedReference
     public List<Game> games;
+
 
     public Order(){
 
     }
+
 
     public Order(List<Game> games){
         this.games = games;
