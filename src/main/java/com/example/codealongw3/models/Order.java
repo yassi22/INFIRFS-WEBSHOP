@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,13 +18,13 @@ public class Order {
 
     @OneToMany
     @JsonManagedReference
-    public Set<Game> games;
+    public List<Game> games;
 
     public Order(){
 
     }
 
-    public Order(Set<Game> games){
+    public Order(List<Game> games){
         this.games = games;
     }
 
@@ -35,13 +36,15 @@ public class Order {
         this.id = id;
     }
 
-    public Set<Game> getGames() {
+    public List<Game> getGames() {
         return games;
     }
 
-    public void setGames(Set<Game> games) {
+    public void setGames(List<Game> games) {
         this.games = games;
     }
+
+
 
 
 }
