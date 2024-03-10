@@ -2,7 +2,9 @@ package com.example.codealongw3.dao;
 
 import com.example.codealongw3.dto.GameDTO;
 import com.example.codealongw3.models.Game;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -25,36 +27,47 @@ public class GameDao {
     }
 
 
-    public void updateGame(GameDTO gameDTO, Long id){
+    public void updateGame(GameDTO gameDTO, Long id) {
         Optional<Game> game = this.gameRepository.findById(id);
 
-        if(game.isPresent()){
+        if (game.isPresent()) {
 
             game.get().setTitle(gameDTO.title);
             game.get().setDescription(gameDTO.description);
-            game.get().setGenre(gameDTO.genre);
             game.get().setDeveloper(gameDTO.developer);
             game.get().setPublisher(gameDTO.publisher);
             game.get().setReleaseDate(gameDTO.releaseDate);
-            game.get().setLanguages(gameDTO.languages);
             game.get().setPrice(gameDTO.price);
 
             this.gameRepository.save(game.get());
 
-        } else{
+        } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Foutmelding Game product met dat id bestaat niet");
         }
 
     }
 
+    public Game getGame(long id) {
+        Optional<Game> game = this.gameRepository.findById(id);
+
+        if (game.isPresent()) {
+            return game.get();
+        } else {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "De gevraagde game product is niet gevonden"
+            );
+        }
+    }
+
+//    @RolesAllowed("")
     @Transactional
     public void createGame(GameDTO gameDTO) {
 
-        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.genre, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.languages, gameDTO.price);
+        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.price, gameDTO.amount);
         this.gameRepository.save(game);
     }
 
-    public void deleteGameById(Long id){
+    public void deleteGameById(Long id) {
         this.gameRepository.deleteById(id);
     }
 

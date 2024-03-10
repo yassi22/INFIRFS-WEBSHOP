@@ -10,23 +10,21 @@ import java.util.List;
 public class GameDTO {
     public String title;
     public String description;
-    public List<String> genre;
     public String developer;
     public String publisher;
     public String releaseDate;
-    public List<String> languages;
+
     public double price;
+    public int amount;
 
-
-    public GameDTO(String title, String description, List<String> genre, String developer, String publisher, String releaseDate, List<String> languages, double price){
+    public GameDTO(String title, String description, String developer, String publisher, String releaseDate, double price, int amount){
         this.title = title;
         this.description = description;
-        this.genre = genre;
         this.developer = developer;
         this.publisher = publisher;
         this.releaseDate = releaseDate;
-        this.languages = languages;
         this.price = price;
+        this.amount = amount;
     }
 
 

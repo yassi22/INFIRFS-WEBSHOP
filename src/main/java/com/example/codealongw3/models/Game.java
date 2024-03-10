@@ -1,11 +1,13 @@
 package com.example.codealongw3.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Game {
@@ -20,47 +22,51 @@ public class Game {
     private String description;
 
     @NotNull
-    @ElementCollection
-    private List<String> genre;
-
-    @NotNull
     private String developer;
     @NotNull
     private String publisher;
 
     private String releaseDate;
 
-    @NotNull
-    @ElementCollection
-    private List<String> languages;
+    @ManyToMany
+    @JsonBackReference
+    private Set<Language> languages;
+
+    @ManyToOne
+    @JsonBackReference
+    private Genre genre;
+
+    @ManyToOne
+    @JsonBackReference
+    private Order order;
 
 
 //    @ManyToOne(cascade = CascadeType.MERGE)
 //    @JsonBackReference
 //    private Review review;
 //
-//    @NotNull
-//    @OneToOne(cascade = CascadeType.MERGE)
-//    @JsonBackReference
-//    private GameSystemRequirments gameSystemRequirments;
+
+
 
     @NotNull
     private double price;
+
+    @NotNull
+    private int amount;
 
 
     public Game(){
 
     }
 
-    public Game(String title, String description, List<String> genre, String developer, String publisher, String releaseDate,List<String> languages, double price){
+    public Game(String title, String description, String developer, String publisher, String releaseDate, double price, int amount){
         this.title = title;
         this.description = description;
-        this.genre = genre;
         this.developer = developer;
         this.publisher = publisher;
         this.releaseDate = releaseDate;
-        this.languages = languages;
         this.price = price;
+        this.amount = amount;
     }
 
     public String getTitle() {
@@ -79,14 +85,13 @@ public class Game {
         this.description = description;
     }
 
-    public List<String> getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(List<String> genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
-
 
     public String getDeveloper() {
         return developer;
@@ -112,15 +117,23 @@ public class Game {
         this.releaseDate = releaseDate;
     }
 
-    public List<String> getLanguages() {
+    public Set<Language> getLanguages() {
         return languages;
     }
 
-    public void setLanguages(List<String> languages) {
+    public void setLanguages(Set<Language> languages) {
         this.languages = languages;
     }
 
-//    public Review getReview() {
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    //    public Review getReview() {
 //        return review;
 //    }
 //
