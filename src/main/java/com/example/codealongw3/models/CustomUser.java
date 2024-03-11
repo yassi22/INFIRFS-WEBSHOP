@@ -3,6 +3,7 @@ package com.example.codealongw3.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "Users")
 public class CustomUser {
@@ -10,9 +11,24 @@ public class CustomUser {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     private String email;
 
+    @NotNull
     private String password;
+    @NotNull
+    private String voornaam;
+
+    private String tussenvoegsel;
+    @NotNull
+    private String achternaam;
+    @NotNull
+    private String straat;
+    @NotNull
+    private int huisnummer;
+    @NotNull
+    private String postcode;
+
 
     public CustomUser(String email,String password) {
         this.email = email;
@@ -21,6 +37,55 @@ public class CustomUser {
 
     public CustomUser( ) {
 
+    }
+
+
+    public String getVoornaam() {
+        return voornaam;
+    }
+
+    public void setVoornaam(String voornaam) {
+        this.voornaam = voornaam;
+    }
+
+    public String getTussenvoegsel() {
+        return tussenvoegsel;
+    }
+
+    public void setTussenvoegsel(String tussenvoegsel) {
+        this.tussenvoegsel = tussenvoegsel;
+    }
+
+    public String getAchternaam() {
+        return achternaam;
+    }
+
+    public void setAchternaam(String achternaam) {
+        this.achternaam = achternaam;
+    }
+
+    public String getStraat() {
+        return straat;
+    }
+
+    public void setStraat(String straat) {
+        this.straat = straat;
+    }
+
+    public int getHuisnummer() {
+        return huisnummer;
+    }
+
+    public void setHuisnummer(int huisnummer) {
+        this.huisnummer = huisnummer;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
     public Long getId() {

@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 
+import javax.print.attribute.standard.DateTimeAtCreation;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +23,7 @@ public class Order {
     @JsonManagedReference
     public List<Game> games;
 
+    public LocalDateTime datum;
 
     public Order(){
 
