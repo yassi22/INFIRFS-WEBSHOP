@@ -71,7 +71,12 @@ public class Seeder {
                 "Cd project RED",
                 "mar 20 2019",
                 59.99,
-                3
+                3,
+                "Windows 10 64 bit",
+                "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
+                "4 GB RAM",
+                "NVIDIA 9800 GT 1GB",
+                "100% DirectX 10 compatible"
         );
 
         Genre genre1 = new Genre("Shooter");
@@ -90,7 +95,12 @@ public class Seeder {
                 "Playstation PC LLC",
                 "14 Jan, 2002",
                 49.99,
-                3
+                3,
+                "Windows 10 64 bit",
+                "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
+                "4 GB RAM",
+                "NVIDIA 9800 GT 1GB",
+                "100% DirectX 10 compatible"
         );
 
         Genre genre2 = new Genre("Action");
@@ -115,8 +125,13 @@ public class Seeder {
                 "Arrowhead Game Studios",
                 "PlayStation PC LLC",
                 "8 Feb, 2024",
-                49.99
-                , 4)));
+                49.99,
+                4,
+                "Windows 10 64 bit",
+                "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
+                "4 GB RAM",
+                "NVIDIA 9800 GT 1GB",
+                "100% DirectX 10 compatible")));
 
         this.orderRepository.save(order);
     }
