@@ -25,13 +25,16 @@ public class Order {
 
     public LocalDateTime datum;
 
+
+
     public Order(){
 
     }
 
 
-    public Order(List<Game> games){
+    public Order(List<Game> games, LocalDateTime datum){
         this.games = games;
+        this.datum = datum;
     }
 
     public long getId() {
@@ -50,7 +53,11 @@ public class Order {
         this.games = games;
     }
 
+    public LocalDateTime getDatum() {
+        return datum;
+    }
 
-
-
+    public void setDatum(LocalDateTime datum) {
+        this.datum = datum;
+    }
 }
