@@ -46,12 +46,27 @@ public class Game {
     @NotNull
     private int amount;
 
+    @NotNull
+    private String os;
+
+    @NotNull
+    private String processor;
+
+    @NotNull
+    private String memory;
+
+    @NotNull
+    private String graphics;
+
+    @NotNull
+    private String sound_card;
+
 
     public Game(){
 
     }
 
-    public Game(String title, String description, String developer, String publisher, String releaseDate, double price, int amount){
+    public Game(String title, String description, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){
         this.title = title;
         this.description = description;
         this.developer = developer;
@@ -59,6 +74,11 @@ public class Game {
         this.releaseDate = releaseDate;
         this.price = price;
         this.amount = amount;
+        this.os  = os;
+        this.processor = processor;
+        this.memory = memory;
+        this.graphics = graphics;
+        this.sound_card = sound_card;
     }
 
     public String getTitle() {
@@ -141,15 +161,52 @@ public class Game {
 //        this.review = review;
 //    }
 //
-//    public GameSystemRequirments getGameSystemRequirments() {
-//        return gameSystemRequirments;
-//    }
-//
+
     public double getPrice() {
         return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public String getGraphics() {
+        return graphics;
+    }
+
+    public void setGraphics(String graphics) {
+        this.graphics = graphics;
+    }
+
+    public String getSound_card() {
+        return sound_card;
+    }
+
+    public void setSound_card(String sound_card) {
+        this.sound_card = sound_card;
     }
 }
