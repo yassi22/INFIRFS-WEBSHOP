@@ -11,7 +11,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +27,20 @@ public class Seeder {
     private LanguageRepository languageRepository;
 
     private OrderRepository orderRepository;
+
+    private Game hellDivers2 = new Game(
+            "Hell Divers",
+            "A game about killing bugs",
+            "Arrowhead Game Studios",
+            "PlayStation PC LLC",
+            "8 Feb, 2024",
+            49.99,
+            4,
+            "Windows 10 64 bit",
+            "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
+            "4 GB RAM",
+            "NVIDIA 9800 GT 1GB",
+            "100% DirectX 10 compatible");
 
 
     public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository) {
@@ -119,19 +133,6 @@ public class Seeder {
 
     public void seedOrders() {
         Order order = new Order();
-        order.setGames(List.of(new Game(
-                "Hell Divers",
-                "A game about killing bugs",
-                "Arrowhead Game Studios",
-                "PlayStation PC LLC",
-                "8 Feb, 2024",
-                49.99,
-                4,
-                "Windows 10 64 bit",
-                "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
-                "4 GB RAM",
-                "NVIDIA 9800 GT 1GB",
-                "100% DirectX 10 compatible")));
 
         this.orderRepository.save(order);
     }

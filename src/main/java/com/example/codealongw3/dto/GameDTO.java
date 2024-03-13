@@ -5,8 +5,7 @@ import com.example.codealongw3.models.Game;
 import jakarta.persistence.ElementCollection;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class GameDTO {
     public String title;
@@ -16,11 +15,11 @@ public class GameDTO {
     public String releaseDate;
     public double price;
     public int amount;
-    private String os;
-    private String processor;
-    private String memory;
-    private String graphics;
-    private String sound_card;
+    public String os;
+    public String processor;
+    public String memory;
+    public String graphics;
+    public String sound_card;
 
 
     public GameDTO(String title, String description, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){

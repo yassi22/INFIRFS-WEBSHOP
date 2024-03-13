@@ -43,11 +43,11 @@ public class UserDao {
         }
     }
 
-   @Transactional
-    public void createUser(){
-        CustomUser user = new CustomUser();
-        this.userRepository.save(user);
-   }
+//   @Transactional
+//    public void createUser(UserDTO userDTO){
+//        CustomUser user = new CustomUser(userDTO.email, userDTO.achternaam, userDTO.email, userDTO.password);
+//        this.userRepository.save(user);
+//   }
 
    public void deletUserById(Long id){
         this.userRepository.deleteById(id);

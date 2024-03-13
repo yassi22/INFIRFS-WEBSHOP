@@ -2,6 +2,7 @@ package com.example.codealongw3.dao;
 
 
 import com.example.codealongw3.dto.OrderDTO;
+import com.example.codealongw3.models.Game;
 import com.example.codealongw3.models.Order;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
@@ -34,9 +35,12 @@ public class OrderDao {
     }
 
     @Transactional
-    public void createOrder(){
-        Order order = new Order();
-        this.orderRepository.save(order);
+    public void createOrder(OrderDTO orderDTO){
+        for(Game game : orderDTO.games) {
+
+            Order order = new Order(game.getTitle(), game.getPrice(), orderDTO.datum);
+            this.orderRepository.save(order);
+        }
 
     }
 

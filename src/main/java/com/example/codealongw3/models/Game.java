@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,7 +40,6 @@ public class Game {
     @ManyToOne
     @JsonBackReference
     private Order order;
-
 
     @NotNull
     private double price;
@@ -152,15 +153,6 @@ public class Game {
     public void setOrder(Order order) {
         this.order = order;
     }
-
-    //    public Review getReview() {
-//        return review;
-//    }
-//
-//    public void setReview(Review review) {
-//        this.review = review;
-//    }
-//
 
     public double getPrice() {
         return price;

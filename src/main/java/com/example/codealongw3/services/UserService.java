@@ -29,5 +29,8 @@ public class UserService implements UserDetailsService {
         return new User(email, customUser.getPassword(), Collections.singleton(new SimpleGrantedAuthority("ROLE USER")));
     }
 
+    public UserDetails setAdmin(String email) throws  UsernameNotFoundException{
+        return new User(email,);
+    }
 
 }

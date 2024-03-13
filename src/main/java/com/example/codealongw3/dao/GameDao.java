@@ -63,7 +63,7 @@ public class GameDao {
     @Transactional
     public void createGame(GameDTO gameDTO) {
 
-        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.price, gameDTO.amount);
+        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.price, gameDTO.amount, gameDTO.os, gameDTO.processor,gameDTO.memory,gameDTO.graphics,gameDTO.sound_card);
         this.gameRepository.save(game);
     }
 

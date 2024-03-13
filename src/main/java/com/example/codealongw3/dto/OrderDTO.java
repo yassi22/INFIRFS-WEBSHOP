@@ -10,10 +10,8 @@ public class OrderDTO {
 
     public LocalDateTime datum;
 
-    public OrderDTO(List<Game> games, LocalDateTime datum){
+    public OrderDTO(List<Game> games, LocalDateTime datum) {
         this.games = games;
         this.datum = datum;
     }
-
-
 }

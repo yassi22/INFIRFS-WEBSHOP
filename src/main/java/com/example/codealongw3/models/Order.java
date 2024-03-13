@@ -25,6 +25,9 @@ public class Order {
 
     public LocalDateTime datum;
 
+    public String orderTitle;
+
+    public double orderPrice;
 
 
     public Order(){
@@ -32,8 +35,9 @@ public class Order {
     }
 
 
-    public Order(List<Game> games, LocalDateTime datum){
-        this.games = games;
+    public Order(String orderTitle, double orderPrice,  LocalDateTime datum){
+        this.orderTitle = orderTitle;
+        this.orderPrice = orderPrice;
         this.datum = datum;
     }
 
@@ -59,5 +63,21 @@ public class Order {
 
     public void setDatum(LocalDateTime datum) {
         this.datum = datum;
+    }
+
+    public String getOrderTitle() {
+        return orderTitle;
+    }
+
+    public void setOrderTitle(String orderTitle) {
+        this.orderTitle = orderTitle;
+    }
+
+    public double getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(int orderPrice) {
+        this.orderPrice = orderPrice;
     }
 }

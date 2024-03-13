@@ -44,7 +44,7 @@ public class OrderController {
     @PostMapping
     public ResponseEntity<String> createOrder(@RequestBody OrderDTO orderDTO){
         try{
-           this.orderDao.createOrder();
+           this.orderDao.createOrder(orderDTO);
            return ResponseEntity.ok("Order created");
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
