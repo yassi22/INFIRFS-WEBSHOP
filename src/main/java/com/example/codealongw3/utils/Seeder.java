@@ -1,6 +1,10 @@
 package com.example.codealongw3.utils;
 
+import com.example.codealongw3.controller.AuthController;
 import com.example.codealongw3.dao.*;
+import com.example.codealongw3.dto.AuthenticationDTO;
+import com.example.codealongw3.dto.OrderDTO;
+import com.example.codealongw3.dto.UserDTO;
 import com.example.codealongw3.models.*;
 import jakarta.persistence.ElementCollection;
 import jakarta.transaction.TransactionScoped;
@@ -28,6 +32,13 @@ public class Seeder {
 
     private OrderRepository orderRepository;
 
+    private OrderDao orderDao;
+
+    private  UserDao userDao;
+
+    private AuthController authController;
+
+
     private Game hellDivers2 = new Game(
             "Hell Divers",
             "A game about killing bugs",
@@ -43,12 +54,15 @@ public class Seeder {
             "100% DirectX 10 compatible");
 
 
-    public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository) {
+    public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository, OrderDao orderDao, UserDao userDao, AuthController authController) {
         this.taskDao = taskDao;
         this.gameRepository = gameRepository;
         this.genreRepository = genreRepository;
         this.languageRepository = languageRepository;
         this.orderRepository = orderRepository;
+        this.orderDao = orderDao;
+        this.userDao = userDao;
+        this.authController = authController;
     }
 
 
@@ -56,6 +70,7 @@ public class Seeder {
     public void seed(ContextRefreshedEvent event) {
         this.seedTasks();
         this.seedGames();
+        this.seedUsers();
         this.seedOrders();
     }
 
@@ -131,11 +146,19 @@ public class Seeder {
 
     }
 
-    public void seedOrders() {
-        Order order = new Order();
+    public void seedUsers(){
 
-        this.orderRepository.save(order);
+        AuthenticationDTO authenticationDTO = new AuthenticationDTO("test@mail.com","V!vU7%3_4R3>", "piet", null, "Jong", "Vliegweg",4,"2324KL");
+        authController.register(authenticationDTO);
     }
+
+    public void seedOrders() {
+        OrderDTO orderDTO = new OrderDTO(List.of(1L,2L),1L);
+        orderDao.createOrder(orderDTO);
+
+    }
+
+
 
 
 }

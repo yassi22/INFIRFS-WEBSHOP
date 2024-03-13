@@ -1,9 +1,13 @@
 package com.example.codealongw3.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity(name = "Users")
 public class CustomUser {
@@ -29,10 +33,21 @@ public class CustomUser {
     @NotNull
     private String postcode;
 
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    public List<Order> orders;
 
-    public CustomUser(String email,String password) {
+
+
+    public CustomUser(String email,String password, String voornaam, String tussenvoegsel, String achternaam, String straat, int huisnummer, String postcode) {
         this.email = email;
         this.password = password;
+        this.voornaam = voornaam;
+        this.tussenvoegsel = tussenvoegsel;
+        this.achternaam = achternaam;
+        this.straat = straat;
+        this.huisnummer = huisnummer;
+        this.postcode = postcode;
     }
 
     public CustomUser( ) {
@@ -110,5 +125,13 @@ public class CustomUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

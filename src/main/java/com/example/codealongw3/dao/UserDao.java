@@ -23,15 +23,7 @@ public class UserDao {
         return this.userRepository.findAll();
     }
 
-//    public void updateUser(UserDTO userDTO, Long id){
-//        Optional<CustomUser> user = this.userRepository.findById(id);
-//
-//        if(user.isPresent()){
-//            user.get().setVoornaam(userDTO.voornaam);
-//
-//        }
-//    }
-//
+
 
     public CustomUser getUser(long id){
         Optional<CustomUser> user = this.userRepository.findById(id);
@@ -43,17 +35,38 @@ public class UserDao {
         }
     }
 
-//   @Transactional
-//    public void createUser(UserDTO userDTO){
-//        CustomUser user = new CustomUser(userDTO.email, userDTO.achternaam, userDTO.email, userDTO.password);
-//        this.userRepository.save(user);
-//   }
+    public void updateUser(UserDTO userDTO, Long id){
+        Optional<CustomUser> user = this.userRepository.findById(id);
+
+        if(user.isPresent()){
+            user.get().setEmail(userDTO.email);
+            user.get().setPassword(userDTO.password);
+            user.get().setVoornaam(userDTO.voornaam);
+            user.get().setTussenvoegsel(userDTO.tussenvoegsel);
+            user.get().setAchternaam(userDTO.achternaam);
+            user.get().setStraat(userDTO.straat);
+            user.get().setHuisnummer(userDTO.huisnummer);
+            user.get().setPostcode(userDTO.postcode);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Could not update user");
+        }
+
+    }
+
+
+
+    @Transactional
+    public void createUser(UserDTO userDTO){
+        CustomUser user = new CustomUser(userDTO.email, userDTO.password, userDTO.voornaam, userDTO.tussenvoegsel, userDTO.achternaam, userDTO.straat, userDTO.huisnummer, userDTO.postcode);
+        this.userRepository.save(user);
+    }
+
+
+
 
    public void deletUserById(Long id){
         this.userRepository.deleteById(id);
    }
-
-
 
 
 }

@@ -47,6 +47,11 @@ public class GameDao {
 
     }
 
+    public List<Game> getGames(List<Long> ids){
+        return this.gameRepository.findAllById(ids);
+    }
+
+
     public Game getGame(long id) {
         Optional<Game> game = this.gameRepository.findById(id);
 

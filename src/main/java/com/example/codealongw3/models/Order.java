@@ -2,10 +2,7 @@ package com.example.codealongw3.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import javax.print.attribute.standard.DateTimeAtCreation;
@@ -22,6 +19,10 @@ public class Order {
     @OneToMany(mappedBy = "order")
     @JsonManagedReference
     public List<Game> games;
+
+    @ManyToOne
+    @JsonBackReference
+    public CustomUser user;
 
     public LocalDateTime datum;
 
@@ -77,7 +78,15 @@ public class Order {
         return orderPrice;
     }
 
-    public void setOrderPrice(int orderPrice) {
+    public void setOrderPrice(double orderPrice) {
         this.orderPrice = orderPrice;
+    }
+
+    public CustomUser getUser() {
+        return user;
+    }
+
+    public void setUser(CustomUser user) {
+        this.user = user;
     }
 }
