@@ -5,6 +5,7 @@ import com.example.codealongw3.dao.GameDao;
 import com.example.codealongw3.dto.GameDTO;
 import com.example.codealongw3.models.Game;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,12 +21,13 @@ public class GameController {
         this.gameDao = gameDao;
     }
 
+
     @GetMapping
     public ResponseEntity<List<Game>> getAllGames() {
         return ResponseEntity.ok(gameDao.getAllGames());
     }
 
-
+    @PreAuthorize("hasRole('ROLE_BEHEERDER') or hasRole('ROLE_ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<String> updateGame(@PathVariable Long id, @RequestBody GameDTO gameDTO) {
         this.gameDao.updateGame(gameDTO, id);
@@ -43,7 +45,7 @@ public class GameController {
         }
     }
 
-
+    @PreAuthorize("hasRole('ROLE_BEHEERDER') or hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<String> createGame(@RequestBody GameDTO gameDTO) {
         try {
@@ -54,6 +56,7 @@ public class GameController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_BEHEERDER') or hasRole('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
         this.gameDao.deleteGameById(id);

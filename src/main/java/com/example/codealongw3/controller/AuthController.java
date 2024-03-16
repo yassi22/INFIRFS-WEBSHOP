@@ -62,7 +62,7 @@ public class AuthController {
         String encodedPassword = passwordEncoder.encode(authenticationDTO.password);
 
         CustomUser registerdCustomUser = new CustomUser(authenticationDTO.email, encodedPassword, authenticationDTO.voornaam, authenticationDTO.tussenvoegsel, authenticationDTO.achternaam, authenticationDTO.straat,
-        authenticationDTO.huisnummer, authenticationDTO.postcode);
+        authenticationDTO.huisnummer, authenticationDTO.postcode, "ROLE_USER");
 
         userDAO.save(registerdCustomUser);
         String token = jwtUtil.generateToken(registerdCustomUser.getEmail());

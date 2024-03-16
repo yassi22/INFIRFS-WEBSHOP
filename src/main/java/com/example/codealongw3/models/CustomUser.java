@@ -37,9 +37,10 @@ public class CustomUser {
     @JsonManagedReference
     public List<Order> orders;
 
+    @NotNull
+    private String role;
 
-
-    public CustomUser(String email,String password, String voornaam, String tussenvoegsel, String achternaam, String straat, int huisnummer, String postcode) {
+    public CustomUser(String email,String password, String voornaam, String tussenvoegsel, String achternaam, String straat, int huisnummer, String postcode, String role) {
         this.email = email;
         this.password = password;
         this.voornaam = voornaam;
@@ -48,6 +49,15 @@ public class CustomUser {
         this.straat = straat;
         this.huisnummer = huisnummer;
         this.postcode = postcode;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public CustomUser( ) {

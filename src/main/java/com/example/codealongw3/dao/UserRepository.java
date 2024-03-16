@@ -10,4 +10,5 @@ public interface UserRepository extends JpaRepository<CustomUser, Long> {
     public CustomUser findByEmail(String email);
 
 
+
 }

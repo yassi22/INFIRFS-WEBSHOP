@@ -7,6 +7,7 @@ import com.example.codealongw3.dto.LanguageDTO;
 import com.example.codealongw3.models.Genre;
 import com.example.codealongw3.models.Language;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class LanguageController {
         return ResponseEntity.ok(languageDao.GetAllLanguage());
     }
 
-
+    @PreAuthorize("hasRole('ROLE_BEHEERDER') or hasRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<String> createLanguage(@RequestBody LanguageDTO languageDTO){
         this.languageDao.createLanguage(languageDTO);

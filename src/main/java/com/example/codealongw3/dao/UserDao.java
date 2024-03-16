@@ -57,14 +57,29 @@ public class UserDao {
 
     @Transactional
     public void createUser(UserDTO userDTO){
-        CustomUser user = new CustomUser(userDTO.email, userDTO.password, userDTO.voornaam, userDTO.tussenvoegsel, userDTO.achternaam, userDTO.straat, userDTO.huisnummer, userDTO.postcode);
+        CustomUser user = new CustomUser(userDTO.email, userDTO.password, userDTO.voornaam, userDTO.tussenvoegsel, userDTO.achternaam, userDTO.straat, userDTO.huisnummer, userDTO.postcode, "ROLE: USER");
         this.userRepository.save(user);
+    }
+
+    @Transactional
+    public void makeUserAdmin(Long userId){
+        CustomUser userAdmin = userRepository.findById(userId).get();
+        userAdmin.setRole("ROLE_ADMIN");
+        userRepository.save(userAdmin);
+    }
+
+    @Transactional
+    public void makeUserBeheerder(Long userId){
+        CustomUser userBeheerder = userRepository.findById(userId).get();
+        userBeheerder.setRole("ROLE_BEHEERDER");
+        userRepository.save(userBeheerder);
     }
 
 
 
 
-   public void deletUserById(Long id){
+
+    public void deletUserById(Long id){
         this.userRepository.deleteById(id);
    }
 

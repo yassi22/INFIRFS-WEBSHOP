@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -18,6 +19,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity()
+
 public class SecurityConfig {
     private final JWTFilter filter;
     private final UserService userService;
@@ -37,6 +40,9 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((auth) -> auth
+                        .requestMatchers("/api/game/**").permitAll()
+                        .requestMatchers("/api/genre/**").permitAll()
+                        .requestMatchers("/api/language/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/error").anonymous()
                         .anyRequest().authenticated()

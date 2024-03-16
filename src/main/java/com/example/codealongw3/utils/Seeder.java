@@ -150,6 +150,8 @@ public class Seeder {
 
         AuthenticationDTO authenticationDTO = new AuthenticationDTO("test@mail.com","V!vU7%3_4R3>", "piet", null, "Jong", "Vliegweg",4,"2324KL");
         authController.register(authenticationDTO);
+        userDao.makeUserAdmin(1L);
+
     }
 
     public void seedOrders() {
