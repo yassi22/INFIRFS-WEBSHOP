@@ -37,9 +37,9 @@ public class Game {
     @JsonBackReference
     private Genre genre;
 
-    @ManyToOne
+    @ManyToMany(mappedBy = "games")
     @JsonBackReference
-    private Order order;
+    public List<Order> orders;
 
     @NotNull
     private double price;
@@ -146,12 +146,20 @@ public class Game {
         this.amount = amount;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public double getPrice() {

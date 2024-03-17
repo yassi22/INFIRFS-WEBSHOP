@@ -8,11 +8,11 @@ public class OrderDTO {
 
     public List<Long> game_ids;
 
-    public Long user_id;
+    public String user_email;
 
-    public OrderDTO(List<Long> game_ids, Long user_id) {
+    public OrderDTO(List<Long> game_ids, String user_email) {
         this.game_ids = game_ids;
-        this.user_id = user_id;
+        this.user_email = user_email;
     }
 
 

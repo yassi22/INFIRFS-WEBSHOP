@@ -5,6 +5,7 @@ import com.example.codealongw3.dto.OrderDTO;
 import com.example.codealongw3.models.Game;
 import com.example.codealongw3.models.Order;
 import com.example.codealongw3.services.GameService;
+import com.example.codealongw3.services.UserService;
 import jakarta.transaction.Transactional;
 import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
@@ -22,13 +23,18 @@ public class OrderDao {
     private final GameDao gameDao;
     private final GameService gameService;
 
+    private final UserRepository  userRepositor;
+
     private final UserDao userDao;
 
-    public OrderDao(OrderRepository orderRepository, GameDao gameDao, GameService gameService, UserDao userDao) {
+
+
+    public OrderDao(OrderRepository orderRepository, GameDao gameDao, GameService gameService, UserDao userDao, UserRepository userRepository) {
         this.orderRepository = orderRepository;
         this.gameDao = gameDao;
         this.gameService = gameService;
         this.userDao = userDao;
+        this.userRepositor = userRepository;
     }
 
     public List<Order> getAllOrders() {
@@ -50,8 +56,8 @@ public class OrderDao {
     public void createOrder(OrderDTO orderDTO) {
         List<Game> gameList = gameDao.getGames(orderDTO.game_ids);
 
-        Order order = new Order(gameService.makeTitle(gameList), gameService.calculatePrice(gameList), LocalDateTime.now());
-        order.setUser(userDao.getUser(orderDTO.user_id));
+        Order order = new Order(gameService.makeTitle(gameList), gameService.calculatePrice(gameList), LocalDateTime.now(), gameList);
+        order.setUser(userRepositor.findByEmail(orderDTO.user_email));
         this.orderRepository.save(order);
 
     }
@@ -65,7 +71,7 @@ public class OrderDao {
             order.get().setGames(gameList);
             order.get().setOrderTitle(gameService.makeTitle(gameList));
             order.get().setOrderPrice(gameService.calculatePrice(gameList));
-            order.get().setUser(userDao.getUser(orderDTO.user_id));
+            order.get().setUser(userRepositor.findByEmail(orderDTO.user_email));
             this.orderRepository.save(order.get());
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fault this id does not exist");

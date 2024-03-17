@@ -155,7 +155,7 @@ public class Seeder {
     }
 
     public void seedOrders() {
-        OrderDTO orderDTO = new OrderDTO(List.of(1L,2L),1L);
+        OrderDTO orderDTO = new OrderDTO(List.of(1L,2L),"test@mail.com");
         orderDao.createOrder(orderDTO);
 
     }

@@ -40,9 +40,10 @@ public class SecurityConfig {
                 .userDetailsService(userService)
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/api/game/**").permitAll()
-                        .requestMatchers("/api/genre/**").permitAll()
-                        .requestMatchers("/api/language/**").permitAll()
+                        .requestMatchers("/game/**").permitAll()
+                        .requestMatchers("/genre/**").permitAll()
+                        .requestMatchers("/order/**").permitAll()
+                        .requestMatchers("/language/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/error").anonymous()
                         .anyRequest().authenticated()

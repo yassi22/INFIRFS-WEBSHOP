@@ -16,7 +16,7 @@ public class Order {
     @GeneratedValue
     public long id;
 
-    @OneToMany(mappedBy = "order")
+    @ManyToMany
     @JsonManagedReference
     public List<Game> games;
 
@@ -36,10 +36,11 @@ public class Order {
     }
 
 
-    public Order(String orderTitle, double orderPrice,  LocalDateTime datum){
+    public Order(String orderTitle, double orderPrice,  LocalDateTime datum, List<Game> games){
         this.orderTitle = orderTitle;
         this.orderPrice = orderPrice;
         this.datum = datum;
+        this.games = games;
     }
 
     public long getId() {
