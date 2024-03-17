@@ -2,8 +2,6 @@ package com.example.codealongw3.controller;
 
 
 import com.example.codealongw3.dao.GenreDao;
-import com.example.codealongw3.dto.CategoryDTO;
-import com.example.codealongw3.dto.GameDTO;
 import com.example.codealongw3.dto.GenreDTO;
 import com.example.codealongw3.models.Genre;
 import org.springframework.http.ResponseEntity;
