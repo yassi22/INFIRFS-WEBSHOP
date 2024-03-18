@@ -25,8 +25,8 @@ public class GenreDao {
         this.genreRepository.save(genre);
     }
 
-    public void createGenre(Genre genre){
-        this.genreRepository.save(genre);
+    public void deleteGenreById(Long id) {
+        this.genreRepository.deleteById(id);
     }
 
 

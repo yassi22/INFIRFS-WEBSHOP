@@ -22,7 +22,6 @@ import java.util.Set;
 @Component
 public class Seeder {
 
-    private TaskDao taskDao;
 
     private GameRepository gameRepository;
 
@@ -54,8 +53,7 @@ public class Seeder {
             "100% DirectX 10 compatible");
 
 
-    public Seeder(TaskDao taskDao, GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository, OrderDao orderDao, UserDao userDao, AuthController authController) {
-        this.taskDao = taskDao;
+    public Seeder( GameRepository gameRepository, GenreRepository genreRepository, LanguageRepository languageRepository, OrderRepository orderRepository, OrderDao orderDao, UserDao userDao, AuthController authController) {
         this.gameRepository = gameRepository;
         this.genreRepository = genreRepository;
         this.languageRepository = languageRepository;
@@ -68,20 +66,12 @@ public class Seeder {
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
-        this.seedTasks();
         this.seedGames();
         this.seedUsers();
         this.seedOrders();
     }
 
-    private void seedTasks() {
-        Category category = new Category("Study tasks");
-        Task task1 = new Task("Angular video bekijken", "Week 1 video bekijken", category);
-        Task task2 = new Task("Springboot vidoe bekijken", "Week 2 video bekijken", category);
-        this.taskDao.createTask(task1);
-        this.taskDao.createTask(task2);
 
-    }
 
 
     private void seedGames() {

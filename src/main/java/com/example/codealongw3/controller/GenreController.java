@@ -33,5 +33,12 @@ public class GenreController {
         return ResponseEntity.ok("Created a genre" + genreDTO.name);
     }
 
+    @PreAuthorize(" hasRole('ROLE_ADMIN')")
+    @DeleteMapping("{/id}")
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+        this.genreDao.deleteGenreById(id);
+        return ResponseEntity.ok("Genre is deleted");
+    }
+
 
 }
