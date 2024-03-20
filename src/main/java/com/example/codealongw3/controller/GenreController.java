@@ -34,7 +34,7 @@ public class GenreController {
     }
 
     @PreAuthorize(" hasRole('ROLE_ADMIN')")
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
         this.genreDao.deleteGenreById(id);
         return ResponseEntity.ok("Genre is deleted");

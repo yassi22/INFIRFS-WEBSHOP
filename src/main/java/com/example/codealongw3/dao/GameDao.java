@@ -34,6 +34,7 @@ public class GameDao {
 
             game.get().setTitle(gameDTO.title);
             game.get().setDescription(gameDTO.description);
+            game.get().setImageurl(gameDTO.imageurl);
             game.get().setDeveloper(gameDTO.developer);
             game.get().setPublisher(gameDTO.publisher);
             game.get().setReleaseDate(gameDTO.releaseDate);
@@ -68,7 +69,7 @@ public class GameDao {
     @Transactional
     public void createGame(GameDTO gameDTO) {
 
-        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.price, gameDTO.amount, gameDTO.os, gameDTO.processor,gameDTO.memory,gameDTO.graphics,gameDTO.sound_card);
+        Game game = new Game(gameDTO.title, gameDTO.description, gameDTO.imageurl, gameDTO.developer, gameDTO.releaseDate, gameDTO.publisher, gameDTO.price, gameDTO.amount, gameDTO.os, gameDTO.processor,gameDTO.memory,gameDTO.graphics,gameDTO.sound_card);
         this.gameRepository.save(game);
     }
 

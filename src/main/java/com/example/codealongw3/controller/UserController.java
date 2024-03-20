@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PreAuthorize(" hasRole('ROLE_ADMIN')")
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CustomUser> getUser(@PathVariable Long id) {
         try {
             CustomUser user = this.userDao.getUser(id);
@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @PreAuthorize(" hasRole('ROLE_ADMIN')")
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody UserDTO userDTO){
         this.userDao.updateUser(userDTO, id);
         return ResponseEntity.ok("User details is updated " + id);
@@ -56,7 +56,7 @@ public class UserController {
 
 
     @PreAuthorize(" hasRole('ROLE_ADMIN')")
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
         this.userDao.deletUserById(id);
         return ResponseEntity.ok("User is deleted");

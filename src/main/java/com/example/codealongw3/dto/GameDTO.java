@@ -10,6 +10,8 @@ import jakarta.validation.constraints.NotNull;
 public class GameDTO {
     public String title;
     public String description;
+
+    public String imageurl;
     public String developer;
     public String publisher;
     public String releaseDate;
@@ -22,9 +24,10 @@ public class GameDTO {
     public String sound_card;
 
 
-    public GameDTO(String title, String description, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){
+    public GameDTO(String title, String description,String imageurl, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){
         this.title = title;
         this.description = description;
+        this.imageurl = imageurl;
         this.developer = developer;
         this.publisher = publisher;
         this.releaseDate = releaseDate;

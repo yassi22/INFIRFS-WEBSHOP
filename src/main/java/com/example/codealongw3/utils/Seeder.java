@@ -41,6 +41,7 @@ public class Seeder {
     private Game hellDivers2 = new Game(
             "Hell Divers",
             "A game about killing bugs",
+            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.instant-gaming.com%2Fnl%2F9575-betaling-helldivers-2-pc-spel-steam-europe%2F&psig=AOvVaw3pp24Smey-MQ7aOo94xiOg&ust=1710961860664000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCLCIjeGDgYUDFQAAAAAdAAAAABAJ",
             "Arrowhead Game Studios",
             "PlayStation PC LLC",
             "8 Feb, 2024",
@@ -86,6 +87,7 @@ public class Seeder {
         Game game = new Game(
                 "Cyberpunk",
                 "Game is set in a cyberpunk world",
+                "https://image.api.playstation.com/vulcan/ap/rnd/202311/2812/ae84720b553c4ce943e9c342621b60f198beda0dbf533e21.jpg",
                 "Cd project RED",
                 "Cd project RED",
                 "mar 20 2019",
@@ -108,8 +110,8 @@ public class Seeder {
 
         Game gameGodOfWar = new Game(
                 "God of war",
-                "Enter the Norse realm\n" +
-                        "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
+                "Enter the Norse realm\n" + "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
+                "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/p3pYq0QxntZQREXRVdAzmn1w.png",
                 "Santa monica studio",
                 "Playstation PC LLC",
                 "14 Jan, 2002",

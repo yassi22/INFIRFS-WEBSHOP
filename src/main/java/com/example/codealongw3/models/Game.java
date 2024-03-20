@@ -23,6 +23,10 @@ public class Game {
     private String description;
 
     @NotNull
+    @Column(length = 1024)
+    private String imageurl;
+
+    @NotNull
     private String developer;
     @NotNull
     private String publisher;
@@ -67,9 +71,10 @@ public class Game {
 
     }
 
-    public Game(String title, String description, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){
+    public Game(String title, String description, String imageurl, String developer, String publisher, String releaseDate, double price, int amount, String os, String processor, String memory, String graphics, String sound_card){
         this.title = title;
         this.description = description;
+        this.imageurl = imageurl;
         this.developer = developer;
         this.publisher = publisher;
         this.releaseDate = releaseDate;
@@ -80,6 +85,14 @@ public class Game {
         this.memory = memory;
         this.graphics = graphics;
         this.sound_card = sound_card;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 
     public String getTitle() {

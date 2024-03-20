@@ -60,7 +60,7 @@ public class OrderController {
     }
 
 
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @GetMapping ("/user/{userId}")
     public ResponseEntity <List<Order>> getOrderUser(@PathVariable Long userId) {
         try {
