@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://s1144425.student.inf-hsleiden.nl:14425"})
 @RequestMapping("/language")
 public class LanguageController {
 

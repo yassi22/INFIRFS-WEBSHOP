@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://s1144425.student.inf-hsleiden.nl:14425"})
 @RequestMapping("/order")
 public class OrderController {
 

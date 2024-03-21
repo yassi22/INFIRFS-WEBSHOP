@@ -67,9 +67,9 @@ public class Seeder {
 
     @EventListener
     public void seed(ContextRefreshedEvent event) {
-        this.seedGames();
-        this.seedUsers();
-        this.seedOrders();
+//        this.seedGames();
+//        this.seedUsers();
+//        this.seedOrders();
     }
 
 
