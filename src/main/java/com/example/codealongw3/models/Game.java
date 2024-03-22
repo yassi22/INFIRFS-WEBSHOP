@@ -20,6 +20,7 @@ public class Game {
     @NotNull
     private String title;
     @NotNull
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @NotNull
