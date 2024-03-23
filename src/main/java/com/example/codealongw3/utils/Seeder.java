@@ -111,7 +111,7 @@ public class Seeder {
         Game gameGodOfWar = new Game(
                 "God of war",
                 "Enter the Norse realm\n" + "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
-                "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/p3pYq0QxntZQREXRVdAzmn1w.png",
+                "https://cdn.akamai.steamstatic.com/steam/apps/1593500/capsule_616x353.jpg?t=1695758729",
                 "Santa monica studio",
                 "Playstation PC LLC",
                 "14 Jan, 2002",
@@ -129,11 +129,37 @@ public class Seeder {
 
         gameGodOfWar.setLanguages(Set.of(language1, language2));
 
+
+        Game stray = new Game(
+                "Stray",
+                "Enter the Norse realm\n" + "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
+                "https://image.api.playstation.com/vulcan/ap/rnd/202206/0300/UogbMjgPOJrYBn5QvUmuR7G9.jpg",
+                "Santa monica studio",
+                "Playstation PC LLC",
+                "14 Jan, 2002",
+                49.99,
+                3,
+                "Windows 10 64 bit",
+                "Intel Core 2 Quad CPU Q6600 @ 2.40GHz",
+                "4 GB RAM",
+                "NVIDIA 9800 GT 1GB",
+                "100% DirectX 10 compatible"
+        );
+
+        stray.setGenre(genre2);
+
+        stray.setLanguages(Set.of(language1, language2));
+
+
+
+
+
         this.genreRepository.save(genre2);
 
 
         this.gameRepository.save(game);
         this.gameRepository.save(gameGodOfWar);
+        this.gameRepository.save(stray);
 
 
     }
