@@ -111,7 +111,7 @@ public class Seeder {
         Game gameGodOfWar = new Game(
                 "God of war",
                 "Enter the Norse realm\n" + "His vengeance against the Gods of Olympus years behind him, Kratos now lives as a man in the realm of Norse Gods and monsters",
-                "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/p3pYq0QxntZQREXRVdAzmn1w.png",
+                "https://cdn.akamai.steamstatic.com/steam/apps/1593500/capsule_616x353.jpg?t=1695758729",
                 "Santa monica studio",
                 "Playstation PC LLC",
                 "14 Jan, 2020",
@@ -194,8 +194,8 @@ public class Seeder {
 
 
         Game gameSpiderman = new Game(
-                "Marvel’s Spider-Man Remastered",
-                "Developed by Insomniac Games in collaboration with Marvel, and optimized for PC by Nixxes Software, Marvel's Spider-Man Remastered on PC introduces an experienced Peter Parker who’s fighting big crime and iconic villains in Marvel’s New York.",
+                "Marvel’s Spider-Man",
+                "Developed by Insomniac Games in collaboration with Marvel, and optimized for PC by Nixxes Software, Marvel's Spider-Man   on PC introduces an experienced Peter Parker who’s fighting big crime and iconic villains in Marvel’s New York.",
                 "https://image.api.playstation.com/vulcan/ap/rnd/202009/3021/5ayReKkz8RaBVuTvrxgA3rvh.png?w=440",
                 " Insomniac Games, Nixxes Software",
                 "PlayStation PC LLC",
